@@ -15,7 +15,17 @@ class Post extends SimpleObject
 
 	public function getLocalUrl()
 	{
-		return $this->data['title'];
+		return '/post/' . $this->getAuthorName() .'/' . $this->getId();
+	}
+
+	public function getAuthorName()
+	{
+		return $this->getAuthor()->getName();
+	}
+
+	public function getAuthor()
+	{
+		return $this->application->bll->authors->getById($this->getAuthorId());
 	}
 
 	public function getRating()

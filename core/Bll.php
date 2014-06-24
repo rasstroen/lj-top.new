@@ -3,7 +3,8 @@
 /**
  * Class Bll
  *
- * @property \Bll\Posts $posts
+ * @property \Bll\Posts 	$posts
+ * @property \Bll\Authors 	$authors
  */
 class Bll extends Component
 {

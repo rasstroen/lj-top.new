@@ -1,6 +1,7 @@
 <?php
 namespace Bll;
 
+use Bll\SimpleObject\Post;
 use Lib\Paging;
 
 class Posts extends Component
@@ -14,15 +15,38 @@ class Posts extends Component
 		return array($posts, $totalFound);
 	}
 
-	public function getPostsByIds($ids, $table = 'posts_data', $data_where = '', $create_table_if_not_exists = true, $short = false)
+	/**
+	 * @param $postId
+	 * @param $authorId
+	 * @return Post
+	 */
+	public function getById($postId, $authorId)
+	{
+		$postIds = $this->getApplication()->db->web->sql2array(
+			'SELECT SQL_CALC_FOUND_ROWS *
+				FROM `posts_aids__' . ($authorId % 20) . '`
+			 	WHERE author_id=? AND post_id=?
+			',
+			array(
+				$authorId,
+				$postId
+			)
+		);
+
+		$posts = $this->getPostsByIds($postIds);
+
+		return $posts ? array_pop($posts) : null;
+	}
+
+	public function getPostsByIds($ids, $table = 'posts_data', $data_where = '', $create_table_if_not_exists = true, $short = false, $idField = 'id')
 	{
 		$posts    = array();
 		$toFetch = array();
 		// sharding
-		$idField = 'id';
+		;
 		if ($table == 'posts_data') {
 			foreach ($ids as $data) {
-				$_table              = $this->addTableForDate($data['pub_date'] ? $data['pub_date'] : $data['pub_time'], $create_table_if_not_exists);
+				$_table              = $this->addTableForDate(isset($data['pub_date']) ? $data['pub_date'] : $data['pub_time'], $create_table_if_not_exists);
 				$_table              = str_replace('dates', 'data', $_table);
 				$toFetch[$_table][] = $data;
 			}

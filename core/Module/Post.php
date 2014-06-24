@@ -8,12 +8,16 @@ class Post extends \Module
 	private $postsPerPage = 20;
 	public function actionShowItem()
 	{
-		$pageTitle = $this->variables['authorName'] . ' — ' . 'todo заголовок поста';
+
+
+		$author = $this->application->bll->authors->getByName($this->variables['authorName']);
+		$post = $this->application->bll->posts->getById($this->variables['postId'], $author->getId());
+
+		$pageTitle = $this->variables['authorName'] . ' — ' . $post->getTitle();
 		$this->application->response->setPageTitle($pageTitle);
 
 		return array(
-			'post'      => array(),
-			'author'    => array(),
+			'post'      => $post,
 		);
 	}
 

@@ -1,6 +1,8 @@
 <?php
 namespace Database;
 
+use Application\Exception;
+
 class MySQL
 {
 	private $pdo;
@@ -41,7 +43,7 @@ class MySQL
 		return $out;
 	}
 
-	public function sql2row($query, array $parameters = null, $keyfield = null)
+	public function selectRow($query, array $parameters = null, $keyfield = null)
 	{
 		$result = $this->sql2array($query, $parameters, $keyfield);
 		return array_shift($result);
@@ -76,7 +78,7 @@ class MySQL
 		else
 		{
 			$errorInfo = $stmt->errorInfo();
-			throw new Exception('Database error:' . print_r($errorInfo, true));
+			throw new \Exception('Database error:' . print_r($errorInfo, true));
 		}
 	}
 }
