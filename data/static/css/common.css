@@ -1,0 +1,108 @@
+body, html {
+	height: 100%;
+	margin: 0; padding: 0;
+}
+@font-face {
+	font-family: 'Museo Sans Cyrl 500';
+	src: url('/static/fonts/MuseoSansCyrl-500.eot');
+	src: url('/static/fonts/MuseoSansCyrl-500.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */ url('/static/fonts/MuseoSansCyrl-500.woff') format('woff'), /* Modern Browsers */ url('/static/fonts/MuseoSansCyrl-500.ttf') format('truetype'), /* Safari, Android, iOS */ url('/static/fonts/MuseoSansCyrl-500.svg#3de9e3e779dc83c8711e382dfdac696a') format('svg');
+	font-style: normal;
+	font-weight: normal;
+}
+
+ul, li{margin: 0; padding: 0;}
+
+body {
+	background: none repeat scroll 0 0 #FFFFFF;
+	border-collapse: collapse;
+	font-family: 'Museo Sans Cyrl 500', sans-serif;
+	font-size: 12px;
+	margin: 0;
+	min-width: 980px;
+	padding: 0;
+}
+
+
+div.head {
+	height: 31px;
+	position: relative;
+}
+
+div.wrapper
+{
+	display: block;
+	max-width: 1280px;
+	min-width: 980px;
+	overflow: hidden;
+	padding: 10px 0 60px;
+}
+
+
+div.left {
+	display: inline-block;
+	max-width: 690px;
+	min-width: 690px;
+	width: auto !important;
+}
+
+div.right {
+	display: inline-block;
+	float: right;
+	min-height: 200px;
+	text-align: center;
+	width: 270px;
+}
+
+div.page {
+	display: block;
+	height: auto !important;
+	margin: 0 auto;
+	max-width: 980px;
+	min-height: 100%;
+	min-width: 980px;
+	position: relative;
+	width: 100%;
+}
+
+div.footer {
+	height: 60px;
+	margin: -60px 0 0;
+	overflow: hidden;
+	position: relative;
+	text-align: right;
+	width: 100%;
+	z-index: 20;
+}
+
+/** Шапка **/
+.stuff_show_header{}
+.stuff_show_header ul{}
+.stuff_show_header ul li{
+	position: relative;
+	display: inline-block;
+	margin : 0;
+	padding: 0;
+	font-family: arial;
+}
+
+.stuff_show_header ul li a{
+	color: #444;
+	font-weight: bold;
+	padding-right: 2px;
+	text-decoration: none;
+	border-bottom: 1px solid #000;
+}
+
+.stuff_show_header ul li a:hover{
+	color:#222;
+	border-bottom-width: 2px;
+}
+/** paging **/
+a.page{
+	margin: 10px;
+	color: #000;
+}
+
+a.page.current{
+	color: red;
+}
