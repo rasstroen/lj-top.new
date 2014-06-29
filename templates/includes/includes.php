@@ -49,3 +49,52 @@ function paging_inc(\Lib\Paging $paging)
 		?><a class="<?=Lib_Util_Html::encode($class)?>" href="<?=Application::i()->request->getCurrentUrl(array('p' => $index))?>"><?=Lib_Util_Html::encode($index)?></a><?php
 	}
 }
+
+
+/**
+ * POST
+ */
+
+function __listPostItem(\Bll\SimpleObject\Post $post)
+{
+	?>
+	<li class="post list clearfix">
+		<h3>
+			<a href="<?= Lib_Util_Html::encode($post->getAuthor()->getLocalUrl()); ?>"><?=Lib_Util_Html::encode($post->getAuthor()->getName())?></a>
+			<span>:</span>
+			<a href="<?= Lib_Util_Html::encode($post->getLocalUrl()); ?>"><?= Lib_Util_Html::encode($post->getTitle()); ?></a>
+		</h3>
+
+		<div>
+			<? if ($post->hasImage()) { ?>
+				<a class="image" href="<?= Lib_Util_Html::encode($post->getLocalUrl()); ?>">
+					<img src="<?= $post->getImage() ?>">
+				</a>
+			<? } ?>
+			<div class="text">
+				<?= Lib_Util_Html::encode($post->getShortText())?>
+			</div>
+
+		</div>
+	</li>
+<?php
+}
+
+function __showPostItem(\Bll\SimpleObject\Post $post)
+{
+	?>
+	<li class="post list clearfix">
+		<h3>
+			<a href="<?= Lib_Util_Html::encode($post->getAuthor()->getLocalUrl()); ?>"><?=Lib_Util_Html::encode($post->getAuthor()->getName())?></a>
+			<span>:</span>
+			<a href="<?= Lib_Util_Html::encode($post->getLocalUrl()); ?>"><?= Lib_Util_Html::encode($post->getTitle()); ?></a>
+		</h3>
+
+		<div>
+			<div class="text">
+				<?= $post->getText()?>
+			</div>
+		</div>
+	</li>
+<?php
+}

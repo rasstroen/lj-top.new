@@ -22,6 +22,7 @@ return array(
 			'cache'     => 0, // nginx кеширование
 			'css'       => array(
 				'common', // общий сss для проекта
+				'posts', // посты они везде
 			),
 			'js'        => array(
 				'common', // общий js для всего проекта

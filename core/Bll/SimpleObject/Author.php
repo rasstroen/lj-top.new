@@ -18,4 +18,9 @@ class Author extends SimpleObject
 		return $this->data['id'];
 	}
 
+	public function getLocalUrl()
+	{
+		return '/author/' . rawurlencode($this->getName());
+	}
+
 }
